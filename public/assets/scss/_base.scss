@@ -1,0 +1,52 @@
+/*!
+ *--------------
+ * Website Author: Yusuf Daudu ( dyCodes )
+ * Author URL: https://github.com/dyCodes
+ *---------------------------------
+ */
+
+// Reset
+ol,
+ul {
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+}
+body {
+  color: #222;
+  font-family: "Montserrat", Roboto, sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 1.4;
+}
+
+h1,
+._heading,
+.section_title h3 {
+  font-family: "Merienda", cursive;
+}
+a {
+  color: $mainColor;
+  text-decoration: none;
+}
+img {
+  width: 100%;
+}
+p {
+  color: $textColor;
+}
+
+// helper Classes
+
+._hide {
+  display: none !important;
+}
