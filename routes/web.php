@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PageController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Dashboard Routes
+Route::controller(DashboardController::class)->middleware('auth')->group(function () {
+    Route::get('admin_dashboard', 'index')->name('dashboard');
+    // Override default logout route
+    Route::post('admin/logout', 'logout')->name('logout');
+});
+
 // Pages Routes
 Route::controller(PageController::class)->group(function () {
     Route::get('/', 'index');
-    Route::get('/about', 'about');
-    Route::get('/gallery', 'gallery');
-    Route::get('/contact', 'contact');
+    Route::get('about', 'about');
+    Route::get('gallery', 'gallery');
+    Route::get('contact', 'contact');
 });
