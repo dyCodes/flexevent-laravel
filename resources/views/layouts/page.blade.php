@@ -8,10 +8,10 @@
   <meta content="" name="description" />
   <meta content="" name="keywords" />
 
-  <title>@yield('title')</title>
+  <title>{{ $title }}</title>
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon" />
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+  <link href="/assets/img/favicon.png" rel="icon" />
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,11 +19,11 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Merienda:wght@400;700&display=swap"
     rel="stylesheet">
   <!-- Vendor Files -->
-  <link href="assets/vendor/bootstrap.min.css" rel="stylesheet" />
-  <link href="assets/vendor/glightbox.min.css" rel="stylesheet" />
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="/assets/vendor/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/vendor/glightbox.min.css" rel="stylesheet" />
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
   <!-- Page Files -->
-  <link href="assets/css/style.css" rel="stylesheet" />
+  <link href="/assets/css/style.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -55,7 +55,7 @@
       <div class="container">
         <!-- Logo -->
         <a class="logo" href="/">
-          <img src="./assets/img/logo.png" alt="EventPlanner" />
+          <img src="/assets/img/logo.png" alt="EventPlanner" />
         </a>
 
         <!-- Mobile Toggle Button -->
@@ -128,10 +128,10 @@
   </footer>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap.min.js"></script>
-  <script src="assets/vendor/glightbox.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/glightbox.min.js"></script>
   <!-- Page JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="/assets/js/main.js"></script>
 </body>
 
 </html>

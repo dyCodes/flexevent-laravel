@@ -1,6 +1,4 @@
-@extends('layouts.page')
-
-@section('title', 'Contact - Flexevent')
+@extends('layouts.page', ['title' => 'Contact Us - Flexevent'])
 
 @section('content')
   <main>
@@ -73,13 +71,13 @@
                 <textarea class="form-control" name="message" rows="5" placeholder="Message" required=""></textarea>
               </div>
               <!-- <div class="status">
-                              <div class="alert alert-success" role="alert">
-                                <div>Your message has been sent. Thank you!</div>
-                              </div>
-                              <div class="alert alert-danger" role="alert">
-                                <div class="error-message">Error! Message not sent.</div>
-                              </div>
-                            </div> -->
+                                  <div class="alert alert-success" role="alert">
+                                    <div>Your message has been sent. Thank you!</div>
+                                  </div>
+                                  <div class="alert alert-danger" role="alert">
+                                    <div class="error-message">Error! Message not sent.</div>
+                                  </div>
+                                </div> -->
               <div>
                 <button type="submit" class="btn btn-dark">
                   Send Message

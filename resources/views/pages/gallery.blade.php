@@ -1,6 +1,4 @@
-@extends('layouts.page')
-
-@section('title', 'Gallery - Flexevent')
+@extends('layouts.page', ['title' => 'Gallery - Flexevent'])
 
 @section('content')
   <main>

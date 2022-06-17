@@ -1,6 +1,4 @@
-@extends('layouts.page')
-
-@section('title', 'About - Flexevent')
+@extends('layouts.page', ['title' => 'About - ' . config('app.name')])
 
 @section('content')
   <main>
