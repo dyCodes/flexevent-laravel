@@ -9,10 +9,6 @@
   <!-- Favicons -->
   <link href="/assets/img/favicon.png" rel="icon" />
   <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <!-- Vendor Files -->
   <link rel="stylesheet" href="/assets/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/modules/fontawesome/css/all.min.css">

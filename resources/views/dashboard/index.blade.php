@@ -1,30 +1,141 @@
 @extends('layouts.dashboard', ['title' => 'Dashboard'])
 
 @section('content')
-  <div class="pagetitle mb-3">
-    <h1>Dashboard</h1>
-  </div><!-- End Page Title -->
+  <div class="main-content">
+    <section class="section">
+      <div class="section-header">
+        <h1>Dashboard</h1>
+      </div>
 
-  <section class="section dashboard">
-    <div class="row">
-      <!-- User Balances -->
-      @php
-        // dd(Auth::user());
-      @endphp
-      <div class="col-12">
+      {{-- STATS --}}
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card card-statistic-2">
+            <div class="card-icon shadow-primary bg-primary">
+              <i class="fas fa-archive"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Total Orders</h4>
+              </div>
+              <div class="card-body">
+                59
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-2">
 
-        <div class="card">
-          <div class="card-body pt-2">
-            <div
-              style="height:560px; background-color: #FFFFFF; overflow:hidden; box-sizing: border-box; border: 1px solid #fff; border-radius: 4px; text-align: right; line-height:14px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #fff;padding:1px;padding: 0px; margin: 0px; width: 100%;">
-              <div style="height:520px; padding:0px; margin:0px; width: 100%;"><iframe
-                  src="https://widget.coinlib.io/widget?type=chart&theme=light&coin_id=859&pref_coin_id=1505" width="100%"
-                  height="536px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0"
-                  style="border:0;margin:0;padding:0;line-height:14px;"></iframe></div>
+            <div class="card-icon shadow-primary bg-danger">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Porfolio</h4>
+              </div>
+              <div class="card-body">4</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-2">
+
+            <div class="card-icon shadow-primary bg-primary">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Balance</h4>
+              </div>
+              <div class="card-body">25</div>
             </div>
           </div>
         </div>
       </div>
 
-  </section>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4>Invoices</h4>
+              <div class="card-header-action">
+                <a href="#" class="btn btn-danger">View More <i class="fas fa-chevron-right"></i></a>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive table-invoice">
+                <table class="table table-striped">
+                  <tbody>
+                    <tr>
+                      <th>Invoice ID</th>
+                      <th>Customer</th>
+                      <th>Status</th>
+                      <th>Due Date</th>
+                      <th>Action</th>
+                    </tr>
+                    <tr>
+                      <td><a href="#">INV-87239</a></td>
+                      <td class="font-weight-600">Kusnadi</td>
+                      <td>
+                        <div class="badge badge-warning">Unpaid</div>
+                      </td>
+                      <td>July 19, 2018</td>
+                      <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">INV-48574</a></td>
+                      <td class="font-weight-600">Hasan Basri</td>
+                      <td>
+                        <div class="badge badge-success">Paid</div>
+                      </td>
+                      <td>July 21, 2018</td>
+                      <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">INV-76824</a></td>
+                      <td class="font-weight-600">Muhamad Nuruzzaki</td>
+                      <td>
+                        <div class="badge badge-warning">Unpaid</div>
+                      </td>
+                      <td>July 22, 2018</td>
+                      <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">INV-84990</a></td>
+                      <td class="font-weight-600">Agung Ardiansyah</td>
+                      <td>
+                        <div class="badge badge-warning">Unpaid</div>
+                      </td>
+                      <td>July 22, 2018</td>
+                      <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">INV-87320</a></td>
+                      <td class="font-weight-600">Ardian Rahardiansyah</td>
+                      <td>
+                        <div class="badge badge-success">Paid</div>
+                      </td>
+                      <td>July 28, 2018</td>
+                      <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 @endsection

@@ -2401,7 +2401,7 @@ h6 .badge {
     }
 
     .navbar {
-        left: 5px;
+        left: 0;
         right: 0;
     }
     .navbar .dropdown-menu {
