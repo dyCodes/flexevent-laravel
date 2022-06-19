@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PageController;
 
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,14 @@ Route::controller(DashboardController::class)->middleware('auth')->group(functio
     Route::post('admin/logout', 'logout')->name('logout');
 });
 
+Route::controller(ImageController::class)->middleware('auth')->group(function () {
+    Route::get('admin/gallery', 'index')->name('gallery');
+
+    Route::get('admin/upload', 'upload')->name('upload');
+    Route::post('admin/upload', 'store');
+
+    Route::post('admin/gallery/delete/{id}', 'destroy')->name('gallery.delete');
+});
 // Pages Routes
 Route::controller(PageController::class)->group(function () {
     Route::get('/', 'index');
