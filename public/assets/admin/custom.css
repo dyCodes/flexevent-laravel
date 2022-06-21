@@ -8,6 +8,19 @@
 .sLogo {
     width: 160px;
 }
+#page_overlay {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.3);
+}
+#page_overlay.show {
+    display: block;
+}
+
 .section_title {
     font-size: 22px;
     color: #191d21;
@@ -15,3 +28,44 @@
     position: relative;
     margin: 30px 0 10px;
 }
+.gallery_item {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+}
+.gallery_item img {
+    height: 240px;
+    object-fit: cover;
+}
+
+.gallery_item .deleteBtn {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    transition: 0.3s linear;
+    transform: scale(0);
+    box-shadow: none !important;
+    z-index: 5;
+}
+.gallery_item:hover .deleteBtn {
+    transform: scale(0.9);
+}
+.gallery_item ._overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: none;
+    opacity: 0;
+    transition: 0.6s linear;
+}
+.gallery_item:hover ._overlay {
+    display: block;
+    opacity: 1;
+}
+
+/* .gallery_item input {
+    border-radius: 0;
+} */
