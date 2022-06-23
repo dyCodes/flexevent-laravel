@@ -20,7 +20,15 @@
 #page_overlay.show {
     display: block;
 }
+/*  */
+#app table.dataTable thead th {
+    border: 1px solid #e7e7e7 !important;
+}
+#app table.dataTable {
+    border-collapse: collapse !important;
+}
 
+/* Gallery */
 .section_title {
     font-size: 22px;
     color: #191d21;

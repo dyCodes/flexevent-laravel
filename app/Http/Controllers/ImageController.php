@@ -26,13 +26,13 @@ class ImageController extends Controller
             // Max file size: 6MB
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:6144',
         ]);
-
         $location = $request->location;
 
         foreach ($request->file('image') as $imageFile) {
             $name = $imageFile->getClientOriginalName();
             $imagePath = public_path('upload/' . $location . '/' . $name);
 
+            // Rename if image already exists
             if (file_exists($imagePath)) {
                 $i = 1;
                 $imageName = $imageFile->getClientOriginalName();
@@ -45,8 +45,8 @@ class ImageController extends Controller
                 }
                 // dd($imagePath);
             }
-
             $imageUrl = 'upload/' . $location . '/' . $name;
+
             // Save Image to 'upload' folder
             $imageFile->move(public_path('upload/' . $location), $name);
             // Create Image model
@@ -59,7 +59,6 @@ class ImageController extends Controller
 
         $imagesCount = count($request->image);
         $resText = str()->plural('image', $imagesCount);
-
         return to_route('gallery')->with('success', "Successfully uploaded $imagesCount $resText.");
     }
 
