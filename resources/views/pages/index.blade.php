@@ -150,7 +150,7 @@
 
         <div class="content">
           {{-- Gallery Images --}}
-          @include('inc.gallery_loop', $images)
+          @include('inc.gallery-loop', $images)
         </div>
       </div>
     </section>
