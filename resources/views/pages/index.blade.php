@@ -78,75 +78,9 @@
           <h3>Testimonials</h3>
         </div>
 
-        <div id="testimonialSlider" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#testimonialSlider" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#testimonialSlider" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#testimonialSlider" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <!-- Slider Content -->
-          <div class="carousel-inner">
-
-            <div class="carousel-item active">
-              <div class="container">
-                <div class="content-text">
-                  <p>
-                    If you want your ceremony to be well organised just give them a Call. So
-                    professional and
-                    diplomatic. Great team. labore consequuntur eius ducimus aliquam
-                    provident quam sed ab!
-                  </p>
-                  <p class="client h6">Mary & John</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="carousel-item">
-              <div class="container">
-                <div class="content-text">
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam corporis
-                    commodi illum sint
-                    iusto rerum, ullam temporibus fugiat magni labore consequuntur eius ducimus
-                    aliquam.
-                  </p>
-                  <p class="client h6">TheAdams</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="carousel-item">
-              <div class="container">
-                <div class="content-text">
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam corporis
-                    commodi illum sint
-                    mollitia rem iusto rerum, ullam temporibus fugiat magni labore consequuntur eius
-                    ducimus aliquam
-                    provident quam sed ab!
-                  </p>
-                  <p class="client h6">Mary & John</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <!-- Buttons -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#testimonialSlider" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <!-- <i class="bi bi-arrow-left"></i> -->
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#testimonialSlider"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <!-- <i class="bi bi-arrow-right"></i> -->
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
+        <!-- Slider Content -->
+        @include('inc.testimonial-slider', $testimonials)
       </div>
-
     </section>
 
     <!------- Services Section ------->

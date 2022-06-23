@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\Testimonial;
 
 // use Illuminate\Http\Request;
 
@@ -11,8 +12,10 @@ class PageController extends Controller
     //
     public function index()
     {
+        $testimonials = Testimonial::latest()->get();
         $images = Image::FetchByAlbum('gallery')->take(8);
-        return view('pages.index')->with('images', $images);
+
+        return view('pages.index')->with(['images' => $images, 'testimonials' => $testimonials]);
     }
 
     public function about()
