@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="/assets/modules/jquery-selectric/selectric.css">
   <!-- Template CSS -->
   <link rel="stylesheet" href="/assets/admin/style.css">
-  <link rel="stylesheet" href="/assets/admin/components.css">
+  {{-- <link rel="stylesheet" href="/assets/admin/components.css"> --}}
   <link rel="stylesheet" href="/assets/admin/custom.css">
   {{-- Include custom page files in head --}}
   @yield('head')

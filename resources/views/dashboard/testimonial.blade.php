@@ -21,11 +21,11 @@
 
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-striped" id="data_table">
+                  <table class="table" id="data_table">
                     <thead>
                       <tr>
                         <th class="text-center">#</th>
-                        <th>Client Name</th>
+                        <th>Client</th>
                         <th>Photo</th>
                         <th>Content</th>
                         <th>Action</th>

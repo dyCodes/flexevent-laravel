@@ -5,7 +5,7 @@ function is_active_page($page)
 }
 @endphp
 
-<nav class="navbar navbar-expand-lg main-navbar bg-primary">
+<nav class="navbar navbar-expand-lg main-navbar">
   <ul class="navbar-nav w-100 justify-content-between">
     <li>
       <a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a>
@@ -15,17 +15,13 @@ function is_active_page($page)
       <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"
         aria-expanded="false">
         <img alt="image" src="/assets/admin/avatar/avatar-4.png" class="rounded-circle mr-1">
-        <div class="d-sm-none d-lg-inline-block">{{ auth()->user()->name }}</div>
+        <div class="d-inline-block">{{ auth()->user()->name }}</div>
       </a>
       <div class="dropdown-menu dropdown-menu-right">
         <div class="dropdown-title">
           Logged in
           {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', auth()->user()->last_logged_in)->diffForHumans() }}
         </div>
-
-        {{-- <a href="features-profile" class="dropdown-item has-icon">
-          <i class="far fa-user"></i> Profile
-        </a> --}}
 
         <a href="features-settings" class="dropdown-item has-icon">
           <i class="fas fa-cog"></i> Settings
