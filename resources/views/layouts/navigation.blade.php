@@ -42,7 +42,7 @@ function is_active_page($page)
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand mb-4">
       <a href="{{ route('dashboard') }}">
-        <img src="/assets/img/logo.png" class="sLogo" alt="{{ config('app.name') }}">
+        <img src="/assets/img/logo-dark.png" class="sLogo" alt="{{ config('app.name') }}">
       </a>
     </div>
     <ul class="sidebar-menu">
@@ -76,7 +76,7 @@ function is_active_page($page)
       </li>
 
       <li class="{{ is_active_page('admin/settings') }}">
-        <a class="nav-link" href="#" data-toggle="tooltip" data-original-title="Settings">
+        <a class="nav-link" href="{{ route('settings') }}" data-toggle="tooltip" data-original-title="Settings">
           <i class="fas fa-cog"></i> <span>Settings</span></a>
       </li>
 
