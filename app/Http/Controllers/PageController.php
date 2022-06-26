@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use App\Models\Testimonial;
 
-// use Illuminate\Http\Request;
-
 class PageController extends Controller
 {
     //

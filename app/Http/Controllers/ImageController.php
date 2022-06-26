@@ -62,11 +62,6 @@ class ImageController extends Controller
         return to_route('gallery')->with('success', "Successfully uploaded $imagesCount $resText.");
     }
 
-    // public function update(Request $request, $id)
-    // {
-    //     //
-    // }
-
     public function destroy($id)
     {
         $image = Image::findOrFail($id);
@@ -76,6 +71,6 @@ class ImageController extends Controller
         // Delete image file for folder
         File::delete($imagePath);
 
-        return back()->with('success', 'Image Deleted.');  //
+        return back()->with('success', 'Image Deleted.');
     }
 }

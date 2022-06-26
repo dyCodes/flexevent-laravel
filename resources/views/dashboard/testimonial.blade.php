@@ -6,7 +6,7 @@
       <div class="section-body">
         <h2 class="section_title">Testimonials</h2>
         <p class="section_desc">
-          You can manage all testimonials, such as adding, deleting and more.
+          You can manage all testimonials, such as adding, editing and deleting.
         </p>
         <div class="row mt-4">
           <div class="col-12">
@@ -25,7 +25,7 @@
                     <thead>
                       <tr>
                         <th class="text-center">#</th>
-                        <th>Client</th>
+                        <th style="min-width: 70px;padding-left: 10px">Client</th>
                         <th>Photo</th>
                         <th>Content</th>
                         <th>Action</th>
@@ -41,11 +41,11 @@
                               <td>{{ $x++ }}</td>
                               <td>{{ $item->client_name }}</td>
                               <td>
-                                <img src="{{ $item->getPhoto() }}" class="rounded-circle m-2" width="60"
+                                <img src="{{ $item->getPhoto() }}" class="rounded-circle m-2 img_cover" width="60"
                                   height="60" alt="{{ $item->client_name }}">
                               </td>
                               <td>
-                                <p>{{ $item->getExcerpt(80) }}</p>
+                                <p>{{ $item->getExcerpt(120) }}</p>
                               </td>
                               <td>
                                 <div class="d-flex">

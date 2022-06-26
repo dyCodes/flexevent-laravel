@@ -8,6 +8,9 @@
 .sLogo {
     width: 140px;
 }
+.img_cover {
+    object-fit: cover;
+}
 #page_overlay {
     display: none;
     height: 100vh;
@@ -22,8 +25,9 @@
 }
 /*  */
 #data_table thead th {
-    background-color: #262626;
     color: #fff;
+    border: 1px solid #333;
+    background-color: #262626;
 }
 #data_table td,
 #data_table th {
