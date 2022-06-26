@@ -71,6 +71,8 @@ class ImageController extends Controller
         // Delete image file for folder
         File::delete($imagePath);
 
-        return back()->with('success', 'Image Deleted.');
+        return response()->json(
+            $status = 200
+        );
     }
 }

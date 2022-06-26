@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,24 +28,27 @@ Route::controller(DashboardController::class)->middleware('auth')->group(functio
 // Images Routes
 Route::controller(ImageController::class)->middleware('auth')->group(function () {
     Route::get('admin/gallery', 'index')->name('gallery');
-
     Route::get('admin/upload', 'upload')->name('upload');
     Route::post('admin/upload', 'store');
 
-    Route::post('admin/gallery/delete/{id}', 'destroy')->name('gallery.delete');
+    Route::delete('admin/gallery/{id}', 'destroy')->name('gallery.delete');
 });
 
 // Testimonial Routes
 Route::controller(TestimonialController::class)->middleware('auth')->group(function () {
     Route::get('admin/testimonials', 'index')->name('testimonials');
-
     Route::get('admin/testimonials/create', 'create')->name('testimonials.create');
     Route::post('admin/testimonials/create', 'store');
 
     Route::get('admin/testimonials/edit/{id}', 'edit')->name('testimonials.edit');
     Route::post('admin/testimonials/update/{id}', 'update')->name('testimonials.update');
-
     Route::post('admin/testimonials/delete/{id}', 'destroy')->name('testimonials.delete');
+});
+
+// Settings Route
+Route::controller(SettingController::class)->middleware('auth')->group(function () {
+    Route::get('admin/settings', 'index')->name('settings');
+    Route::post('admin/settings/update', 'update')->name('settings.update');
 });
 
 // Pages Routes
@@ -53,4 +57,5 @@ Route::controller(PageController::class)->group(function () {
     Route::get('about', 'about');
     Route::get('gallery', 'gallery');
     Route::get('contact', 'contact');
+    Route::post('contact', 'send_email')->name('contact');
 });
