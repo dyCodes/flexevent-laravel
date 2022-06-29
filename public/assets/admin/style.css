@@ -2595,7 +2595,8 @@ body {
     font-size: 14px;
     font-weight: 400;
     font-family: "Nunito", "Segoe UI", arial;
-    color: #868e96;
+    color: #6b7075;
+    /* color: #868e96; */
 }
 
 a.bb {
@@ -3380,7 +3381,7 @@ body.sidebar-mini .main-footer {
 
 .main-footer {
     padding: 20px 30px 20px 280px;
-    margin-top: 40px;
+    margin-top: 20px;
     color: #98a6ad;
     border-top: 1px solid #e3eaef;
     display: inline-block;

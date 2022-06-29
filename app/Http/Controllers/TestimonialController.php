@@ -51,14 +51,15 @@ class TestimonialController extends Controller
         $testimonial = Testimonial::findOrFail($id);
         $testimonial->client_name = $request->client_name;
         $testimonial->content = $request->content;
+
+        $file = $request->photo;
         // Check if a new photo was uploaded
-        if ($request->photo) {
-            $file = $request->photo;
+        if ($file) {
             $fileExtension = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
             $name = 'testimonial-' . $testimonial->id . '.' . $fileExtension;
             // Save Image to 'upload' folder
             $file->move(public_path('upload/testimonials/'), $name);
-            // Update photo
+            // Update photo field
             $testimonial->photo = 'upload/testimonials/' . $name;
         }
         // Update Database

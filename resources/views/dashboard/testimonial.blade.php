@@ -45,7 +45,7 @@
                                   height="60" alt="{{ $item->client_name }}">
                               </td>
                               <td>
-                                <p>{{ $item->getExcerpt(120) }}</p>
+                                {{ $item->getExcerpt(120) }}
                               </td>
                               <td>
                                 <div class="d-flex">

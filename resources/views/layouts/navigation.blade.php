@@ -55,14 +55,24 @@ function is_active_page($page)
         </a>
       </li>
 
-      <li class="{{ is_active_page('admin/upload') }}">
+      {{-- <li class="{{ is_active_page('admin/upload') }}">
         <a class="nav-link" href="{{ route('upload') }}" data-toggle="tooltip" data-original-title="Upload">
           <i class="fas fa-upload"></i> <span>Upload Images</span></a>
-      </li>
+      </li> --}}
 
       <li class="{{ is_active_page('admin/gallery') }}">
         <a class="nav-link" href="{{ route('gallery') }}" data-toggle="tooltip" data-original-title="gallery">
           <i class="far fa-images"></i> <span>Gallery</span></a>
+      </li>
+
+      <li class="dropdown {{ is_active_page('admin/services') }}">
+        <a href="#" class="nav-link has-dropdown"><i class="fas fa-clone"></i>
+          <span>Services</span></a>
+
+        <ul class="dropdown-menu" style="display: none;">
+          <li><a class="nav-link" href="{{ route('testimonials') }}">View Services</a></li>
+          <li><a class="nav-link" href="{{ route('testimonials.create') }}">Add New</a></li>
+        </ul>
       </li>
 
       <li class="dropdown {{ is_active_page('admin/testimonials') }}">
