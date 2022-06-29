@@ -49,6 +49,7 @@ Route::controller(TestimonialController::class)->middleware('auth')->group(funct
 Route::controller(SettingController::class)->middleware('auth')->group(function () {
     Route::get('admin/settings', 'index')->name('settings');
     Route::post('admin/settings/update', 'update')->name('settings.update');
+    Route::post('admin/settings/password', 'password')->name('settings.password');
 });
 
 // Pages Routes
