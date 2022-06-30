@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 // Dashboard Routes
 Route::controller(DashboardController::class)->middleware('auth')->group(function () {
-    Route::get('admin_dashboard', 'index')->name('dashboard');
+    Route::get('admin', 'index')->name('dashboard');
     // Override default logout route
     Route::post('admin/logout', 'logout')->name('logout');
 });

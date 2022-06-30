@@ -48,7 +48,7 @@ function is_active_page($page)
     <ul class="sidebar-menu">
       <li class="menu-header">Dashboard</li>
 
-      <li class="{{ is_active_page('admin_dashboard') }}">
+      <li class="{{ is_active_page('admin') }}">
         <a href="{{ route('dashboard') }}" class="nav-link" data-toggle="tooltip" data-original-title="Dashboard"><i
             class="fas fa-fire"></i>
           <span>Dashboard</span>
