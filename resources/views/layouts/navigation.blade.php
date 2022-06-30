@@ -55,11 +55,6 @@ function is_active_page($page)
         </a>
       </li>
 
-      {{-- <li class="{{ is_active_page('admin/upload') }}">
-        <a class="nav-link" href="{{ route('upload') }}" data-toggle="tooltip" data-original-title="Upload">
-          <i class="fas fa-upload"></i> <span>Upload Images</span></a>
-      </li> --}}
-
       <li class="{{ is_active_page('admin/gallery') }}">
         <a class="nav-link" href="{{ route('gallery') }}" data-toggle="tooltip" data-original-title="gallery">
           <i class="far fa-images"></i> <span>Gallery</span></a>

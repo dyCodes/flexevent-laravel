@@ -28,9 +28,7 @@ Route::controller(DashboardController::class)->middleware('auth')->group(functio
 // Images Routes
 Route::controller(ImageController::class)->middleware('auth')->group(function () {
     Route::get('admin/gallery', 'index')->name('gallery');
-    Route::get('admin/upload', 'upload')->name('upload');
-    Route::post('admin/upload', 'store');
-
+    Route::post('admin/upload', 'store')->name('upload');
     Route::delete('admin/gallery/{id}', 'destroy')->name('gallery.delete');
 });
 

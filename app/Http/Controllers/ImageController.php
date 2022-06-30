@@ -22,44 +22,41 @@ class ImageController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'image' => 'required',
             // Max file size: 6MB
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:6144',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:6144',
         ]);
-        $location = $request->location;
 
-        foreach ($request->file('image') as $imageFile) {
-            $name = $imageFile->getClientOriginalName();
-            $imagePath = public_path('upload/' . $location . '/' . $name);
+        $imageFile = $request->file;
+        $name = $imageFile->getClientOriginalName();
+        $imagePath = public_path('upload/gallery/' . $name);
 
-            // Rename if image already exists
-            if (file_exists($imagePath)) {
-                $i = 1;
-                $imageName = $imageFile->getClientOriginalName();
-                $fileExtension = pathinfo($imageName, PATHINFO_EXTENSION);
-                // New image path
-                while (file_exists($imagePath)) {
-                    $name = pathinfo($imageName, PATHINFO_FILENAME) . '-' . $i . '.' .  $fileExtension;
-                    $imagePath = public_path("upload/$location/") . $name;
-                    $i++;
-                }
-                // dd($imagePath);
+        // Rename if image already exists
+        if (file_exists($imagePath)) {
+            $i = 1;
+            $imageName = $imageFile->getClientOriginalName();
+            $fileExtension = pathinfo($imageName, PATHINFO_EXTENSION);
+            // New image path
+            while (file_exists($imagePath)) {
+                $name = pathinfo($imageName, PATHINFO_FILENAME) . '-' . $i . '.' .  $fileExtension;
+                $imagePath = public_path('upload/location/') . $name;
+                $i++;
             }
-            $imageUrl = 'upload/' . $location . '/' . $name;
-
-            // Save Image to 'upload' folder
-            $imageFile->move(public_path('upload/' . $location), $name);
-            // Create Image model
-            $image = new Image();
-            $image->url = $imageUrl;
-            $image->parent = $location;
-            $image->thumbnail = $imageUrl;
-            $image->save();
+            // dd($imagePath);
         }
 
-        $imagesCount = count($request->image);
-        $resText = str()->plural('image', $imagesCount);
-        return to_route('gallery')->with('success', "Successfully uploaded $imagesCount $resText.");
+        $imageUrl = 'upload/gallery/'  . $name;
+        // Save Image to 'upload' folder
+        $imageFile->move(public_path('upload/gallery'), $name);
+        // Create Image model
+        $image = new Image();
+        $image->url = $imageUrl;
+        $image->parent = 'gallery';
+        $image->thumbnail = $imageUrl;
+        $image->save();
+
+        return response()->json(
+            $status = 200
+        );
     }
 
     public function destroy($id)

@@ -17,7 +17,8 @@
             <div class="card">
               <div class="card-header d-flex justify-content-between align-items-center">
                 <h4>Manage Gallery</h4>
-                <a href="{{ route('upload') }}" class="btn btn-primary p-1 px-4">Add Images</a>
+                <div class="btn btn-primary p-1 px-4" data-toggle="modal" data-target="#uploadModal">Add Images
+                </div>
               </div>
 
               <div class="card-body">
@@ -49,10 +50,50 @@
       </div>
     </section>
   </div>
+
+  {{-- Upload Modal --}}
+  <div class="modal fade" tabindex="-1" role="dialog" id="uploadModal" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Upload Images</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <p>Max image size: 6MB</p>
+
+          <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data" class="dropzone"
+            id="mydropzone">@csrf
+            <div class="fallback">
+              <input name="file" type="file" multiple />
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger px-4" data-dismiss="modal">Close</button>
+          <a href="{{ route('gallery') }}" class="btn btn-primary px-4">Refresh Gallery</a>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
+
+@section('head')
+  <link rel="stylesheet" href="/assets/modules/dropzonejs/dropzone.min.css">
 @endsection
 
 @section('footer')
+  <script src="/assets/modules/dropzonejs/dropzone.min.js"></script>
+
   <script>
+    var dropzone = new Dropzone("#mydropzone", {
+      maxFilesize: 6,
+    });
+
     $('.deleteBtn').click(function(e) {
       let id = $(this).data('id');
       let _url = '{{ url('admin/gallery') }}/' + id;
