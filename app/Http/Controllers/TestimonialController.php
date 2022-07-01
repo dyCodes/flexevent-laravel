@@ -11,7 +11,7 @@ class TestimonialController extends Controller
     public function index()
     {
         $testimonials = Testimonial::latest()->get();
-        return view('dashboard.testimonial')->with('testimonials', $testimonials);
+        return view('dashboard.testimonials')->with('testimonials', $testimonials);
     }
 
     public function create()
