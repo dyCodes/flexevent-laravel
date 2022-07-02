@@ -65,8 +65,8 @@ function is_active_page($page)
           <span>Services</span></a>
 
         <ul class="dropdown-menu" style="display: none;">
-          <li><a class="nav-link" href="{{ route('testimonials') }}">View Services</a></li>
-          <li><a class="nav-link" href="{{ route('testimonials.create') }}">Add New</a></li>
+          <li><a class="nav-link" href="{{ route('services') }}">View Services</a></li>
+          <li><a class="nav-link" href="{{ route('services.create') }}">Add New</a></li>
         </ul>
       </li>
 

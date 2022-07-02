@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +33,18 @@ Route::controller(ImageController::class)->middleware('auth')->group(function ()
     Route::delete('admin/gallery/{id}', 'destroy')->name('gallery.delete');
 });
 
-// Testimonial Routes
+// Services Routes
+Route::controller(ServiceController::class)->middleware('auth')->group(function () {
+    Route::get('admin/services', 'index')->name('services');
+    Route::get('admin/services/create', 'create')->name('services.create');
+    Route::post('admin/services/create', 'store');
+
+    Route::get('admin/services/edit/{id}', 'edit')->name('services.edit');
+    Route::post('admin/services/update/{id}', 'update')->name('services.update');
+    Route::post('admin/services/delete/{id}', 'destroy')->name('services.delete');
+});
+
+// Testimonials Routes
 Route::controller(TestimonialController::class)->middleware('auth')->group(function () {
     Route::get('admin/testimonials', 'index')->name('testimonials');
     Route::get('admin/testimonials/create', 'create')->name('testimonials.create');
