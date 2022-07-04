@@ -89,45 +89,26 @@
         <div class="section_title">
           <h3>What we do</h3>
         </div>
-
-        <div class="content row">
-          <div class="col-lg-4 col-md-6">
-            <!-- CARD ITEM -->
-            <a href="about.html#services">
-              <div class="card mb-lg-0">
-                <img src="./assets/img/services/event-wedding.jpg" alt="services" />
-                <div class="card-body">
-                  <h5 class="card-title">Wedding Planning</h5>
-                </div>
+        {{-- Services Loop --}}
+        @if (count($services))
+          <div class="content row">
+            @foreach ($services as $service)
+              <div class="col-lg-4 col-md-6">
+                <!-- CARD ITEM -->
+                <a href="/about#services">
+                  <div class="card mb-lg-0">
+                    <img src="{{ $service->getPhoto() }}" alt="{{ $service->title }}" />
+                    <div class="card-body">
+                      <h5 class="card-title">{{ $service->title }}</h5>
+                    </div>
+                  </div>
+                </a>
               </div>
-            </a>
+            @endforeach
           </div>
-
-          <div class="col-lg-4 col-md-6">
-            <!-- CARD ITEM -->
-            <a href="about.html#services">
-              <div class="card mb-lg-0">
-                <img src="./assets/img/services/corporate.jpg" alt="services" />
-                <div class="card-body">
-                  <h5 class="card-title">Corporate Event</h5>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <!-- CARD ITEM -->
-            <a href="about.html#services">
-              <div class="card mb-lg-0">
-                <img src="./assets/img/services/event-birthday.jpg" alt="services" />
-                <div class="card-body">
-                  <h5 class="card-title">Private Ocassion</h5>
-                </div>
-              </div>
-            </a>
-          </div>
-
-        </div>
+        @else
+          <h5 class="text-center p-3">No Services Found!</h5>
+        @endif
       </div>
     </section>
 

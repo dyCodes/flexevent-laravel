@@ -37,44 +37,25 @@
             <h3>What we do</h3>
           </div>
 
-          <div class="content row">
-            <div class="col-lg-4 col-md-6">
-              <!-- CARD ITEM -->
-              <div class="card mb-lg-0">
-                <img src="./assets/img/services/event-wedding.jpg" alt="services" />
-                <div class="card-body">
-                  <h5 class="card-title">Wedding Planning</h5>
-                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint aut repellendus laudantium nostrum
-                    ad? Eligendi natus ipsam asperiores ad laudantium ex nemo nostrum praesentium rem illum! Quis error
-                    eligendi hic.</p>
+          @if (count($services))
+            <div class="content row">
+              @foreach ($services as $service)
+                <div class="col-lg-4 col-md-6">
+                  <!-- CARD ITEM -->
+                  <div class="card mb-lg-0">
+                    <img src="{{ $service->getPhoto() }}" alt="{{ $service->title }}" />
+                    <div class="card-body">
+                      <h5 class="card-title">{{ $service->title }}</h5>
+                      <p>{{ $service->content }}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              @endforeach
             </div>
-            <div class="col-lg-4 col-md-6">
-              <!-- CARD ITEM -->
-              <div class="card mb-lg-0">
-                <img src="./assets/img/services/corporate.jpg" alt="services" />
-                <div class="card-body">
-                  <h5 class="card-title">Corporate Event</h5>
-                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint aut repellendus laudantium nostrum
-                    ad? Eligendi natus ipsam asperiores ad laudantium ex nemo nostrum praesentium rem illum! Quis error
-                    eligendi hic.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <!-- CARD ITEM -->
-              <div class="card mb-lg-0">
-                <img src="./assets/img/services/event-birthday.jpg" alt="services" />
-                <div class="card-body">
-                  <h5 class="card-title">Private Ocassion</h5>
-                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint aut repellendus laudantium nostrum
-                    ad? Eligendi natus ipsam asperiores ad laudantium ex nemo nostrum praesentium rem illum! Quis error
-                    eligendi hic.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          @else
+            <h5 class="text-center p-3">No Services Found!</h5>
+          @endif
+
         </div>
       </div>
     </article>
