@@ -13,7 +13,7 @@ class PageController extends Controller
     {
         $services = Service::latest()->get();
         $testimonials = Testimonial::latest()->get();
-        $images = Image::FetchByAlbum('gallery')->take(8);
+        $images = Image::FetchByAlbum('gallery', 8);
 
         return view('pages.index')->with([
             'images' => $images,
