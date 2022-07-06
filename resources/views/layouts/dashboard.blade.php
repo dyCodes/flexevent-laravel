@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ $title . ' - ' . config('app.name') }}</title>
+  <title>{{ $title . ' - ' . get_setting('site_title') }}</title>
 
   <!-- Favicons -->
   <link href="/assets/img/favicon.png" rel="icon" />
@@ -35,7 +35,7 @@
 
       <footer class="main-footer">
         <div class="text-center">
-          Copyright &copy; 2022 <div class="bullet"></div> FlexEvent</a>
+          Copyright &copy; {{ date('Y') }} <div class="bullet"></div> {{ get_setting('site_title') }}</a>
         </div>
       </footer>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 
 class SettingController extends Controller
@@ -12,7 +13,7 @@ class SettingController extends Controller
     public function index()
     {
         $settings = Setting::first();
-        $user = User::first();
+        $user = auth()->user();
 
         return view('dashboard.settings')->with(['settings' => $settings, 'user' => $user]);
     }
@@ -28,7 +29,8 @@ class SettingController extends Controller
             'name' => $request->name,
             'email' => $request->email,
         ]);
-
+        // Clear settings cache
+        Cache::forget('settings');
         return to_route('settings')->with('success', "Settings updated successfully.");
     }
 

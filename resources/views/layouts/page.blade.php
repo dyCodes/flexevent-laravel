@@ -8,7 +8,11 @@
   <meta content="" name="description" />
   <meta content="" name="keywords" />
 
-  <title>{{ $title }}</title>
+  @isset($title)
+    <title>{{ $title . ' - ' . get_setting('site_title') }}</title>
+  @else
+    <title>{{ get_setting('site_title') . ' - ' . get_setting('tagline') }}</title>
+  @endisset
   <!-- Favicons -->
   <link href="/assets/img/favicon.png" rel="icon" />
   <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
@@ -39,8 +43,8 @@
         ">
         <div class="contact-info d-flex align-items-center">
           <i class="bi bi-envelope d-flex align-items-center"><a
-              href="mailto:dywebtech@gmail.com">info@company.com</a></i>
-          <i class="bi bi-phone d-flex align-items-center ms-4"><span>+2349038254560</span></i>
+              href="mailto:{{ get_setting('site_email') }}">{{ get_setting('site_email') }}</a></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{ get_setting('site_phone_no') }}</span></i>
         </div>
         <div class="social-links d-none d-md-flex align-items-center">
           <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -55,7 +59,7 @@
       <div class="container">
         <!-- Logo -->
         <a class="logo" href="/">
-          <img src="/assets/img/logo.png" alt="EventPlanner" />
+          <img src="/assets/img/logo.png" alt="{{ get_setting('site_title') }}" />
         </a>
 
         <!-- Mobile Toggle Button -->
@@ -117,8 +121,8 @@
         </li>
       </ul>
       <div class="copy-right text-center">
-        <span>© 2022 EventPlanner. All Rights Reserved | Created by <a href="https://dywebtech.com" target="_blank"
-            rel="noopener noreferrer">Dyweb Tech</a></span>
+        <span>© {{ date('Y') . ' ' . get_setting('site_title') }}. All Rights Reserved | Created by <a
+            href="https://dywebtech.com" target="_blank" rel="noopener noreferrer">Dyweb Tech</a></span>
       </div>
     </div>
     <!-- Whatsapp BTN-->

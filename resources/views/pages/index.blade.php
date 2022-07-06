@@ -1,4 +1,4 @@
-@extends('layouts.page', ['title' => 'Flexevent - EventPlanner In Lagos Nigeria'])
+@extends('layouts.page')
 
 @section('content')
   <main class="home">

@@ -19,8 +19,7 @@ function is_active_page($page)
       </a>
       <div class="dropdown-menu dropdown-menu-right">
         <div class="dropdown-title">
-          Logged in
-          {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', auth()->user()->last_logged_in)->diffForHumans() }}
+          Logged in {{ get_last_logged_in() }}
         </div>
 
         <a href="features-settings" class="dropdown-item has-icon">
