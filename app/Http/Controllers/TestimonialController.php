@@ -25,11 +25,11 @@ class TestimonialController extends Controller
         $testimonial->client_name = $request->client_name;
         $testimonial->content = $request->content;
         $testimonial->save();
+
+        $file = $request->photo;
         // Check if photo was uploaded
-        if ($request->photo) {
-            $file = $request->photo;
-            $fileExt = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
-            $name = 'testimonial-' . $testimonial->id . '.' . $fileExt;
+        if ($file) {
+            $name = 'testimonial-' . $testimonial->id . '.' . $file->extension();
             // Save Image to 'upload' folder
             $file->move(public_path('upload/testimonials/'), $name);
             // Update testimonial
@@ -55,11 +55,9 @@ class TestimonialController extends Controller
         $file = $request->photo;
         // Check if a new photo was uploaded
         if ($file) {
-            $fileExtension = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
-            $name = 'testimonial-' . $testimonial->id . '.' . $fileExtension;
+            $name = 'testimonial-' . $testimonial->id . '.' . $file->extension();
             // Save Image to 'upload' folder
             $file->move(public_path('upload/testimonials/'), $name);
-            // Update photo field
             $testimonial->photo = 'upload/testimonials/' . $name;
         }
         // Update Database
@@ -71,13 +69,11 @@ class TestimonialController extends Controller
     public function destroy($id)
     {
         $testimonial = Testimonial::findOrFail($id);
-        // Get photo path
         if ($testimonial->photo) {
             $imagePath = public_path($testimonial->photo);
             // Delete photo file from folder
             File::delete($imagePath);
         }
-        // Delete from DB
         $testimonial->delete();
 
         return back()->with('success', 'Testimonial Deleted.');

@@ -22,26 +22,22 @@ class ImageController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            // Max file size: 6MB
+            // Max file size: 6MB/6144 KB
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:6144',
         ]);
 
         $imageFile = $request->file;
         $name = $imageFile->getClientOriginalName();
         $imagePath = public_path('upload/gallery/' . $name);
-
         // Rename if image already exists
         if (file_exists($imagePath)) {
             $i = 1;
             $imageName = $imageFile->getClientOriginalName();
-            $fileExtension = pathinfo($imageName, PATHINFO_EXTENSION);
-            // New image path
             while (file_exists($imagePath)) {
-                $name = pathinfo($imageName, PATHINFO_FILENAME) . '-' . $i . '.' .  $fileExtension;
+                $name = pathinfo($imageName, PATHINFO_FILENAME) . '-' . $i . '.' .  $imageFile->extension();
                 $imagePath = public_path('upload/location/') . $name;
                 $i++;
             }
-            // dd($imagePath);
         }
 
         $imageUrl = 'upload/gallery/'  . $name;
@@ -62,10 +58,9 @@ class ImageController extends Controller
     public function destroy($id)
     {
         $image = Image::findOrFail($id);
-        // Get file path
         $imagePath = public_path($image->url);
         $image->delete();
-        // Delete image file for folder
+        // Delete image file from folder
         File::delete($imagePath);
 
         return response()->json(

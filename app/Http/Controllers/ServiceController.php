@@ -26,7 +26,6 @@ class ServiceController extends Controller
         $service->content = $request->content;
         $service->save();
 
-        // Save Photo
         $file = $request->photo;
         if ($file) {
             $name = 'service-' . $service->id . '.' . $file->extension();
@@ -68,13 +67,11 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         $service = Service::findOrFail($id);
-        // Get photo path
         if ($service->photo) {
             $imagePath = public_path($service->photo);
             // Delete photo file from folder
             File::delete($imagePath);
         }
-        // Delete from DB
         $service->delete();
 
         return back()->with('success', 'Service Deleted.');

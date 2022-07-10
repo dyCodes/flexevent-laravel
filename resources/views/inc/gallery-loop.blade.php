@@ -14,5 +14,5 @@
     @endforeach
   </div>
 @else
-  <h6 class="text-center p-3">No Image Found!</h5>
+  <h6 class="text-center p-3">No Image Found!</h6>
 @endif
