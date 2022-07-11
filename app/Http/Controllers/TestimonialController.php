@@ -10,7 +10,9 @@ class TestimonialController extends Controller
 {
     public function index()
     {
-        $testimonials = Testimonial::latest()->get();
+        $testimonials = cache()->remember('testimonials', now()->addDay(), function () {
+            return Testimonial::latest()->get();
+        });
         return view('dashboard.testimonials')->with('testimonials', $testimonials);
     }
 
@@ -25,9 +27,8 @@ class TestimonialController extends Controller
         $testimonial->client_name = $request->client_name;
         $testimonial->content = $request->content;
         $testimonial->save();
-
-        $file = $request->photo;
         // Check if photo was uploaded
+        $file = $request->photo;
         if ($file) {
             $name = 'testimonial-' . $testimonial->id . '.' . $file->extension();
             // Save Image to 'upload' folder
@@ -37,6 +38,7 @@ class TestimonialController extends Controller
             $testimonial->save();
         }
 
+        cache()->forget('testimonials');
         return to_route('testimonials')->with('success', "Testimonial created successfully.");
     }
 
@@ -51,9 +53,8 @@ class TestimonialController extends Controller
         $testimonial = Testimonial::findOrFail($id);
         $testimonial->client_name = $request->client_name;
         $testimonial->content = $request->content;
-
-        $file = $request->photo;
         // Check if a new photo was uploaded
+        $file = $request->photo;
         if ($file) {
             $name = 'testimonial-' . $testimonial->id . '.' . $file->extension();
             // Save Image to 'upload' folder
@@ -63,6 +64,7 @@ class TestimonialController extends Controller
         // Update Database
         $testimonial->save();
 
+        cache()->forget('testimonials');
         return to_route('testimonials')->with('success', "Testimonial updated successfully.");
     }
 
@@ -76,6 +78,7 @@ class TestimonialController extends Controller
         }
         $testimonial->delete();
 
+        cache()->forget('testimonials');
         return back()->with('success', 'Testimonial Deleted.');
     }
 }

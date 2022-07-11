@@ -10,7 +10,9 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::latest()->get();
+        $services = cache()->remember('services', now()->addDay(), function () {
+            return Service::latest()->get();
+        });
         return view('dashboard.services')->with('services', $services);
     }
 
@@ -25,7 +27,7 @@ class ServiceController extends Controller
         $service->title = $request->title;
         $service->content = $request->content;
         $service->save();
-
+        // Check if photo was uploaded
         $file = $request->photo;
         if ($file) {
             $name = 'service-' . $service->id . '.' . $file->extension();
@@ -35,6 +37,7 @@ class ServiceController extends Controller
             $service->save();
         }
 
+        cache()->forget('services');
         return to_route('services')->with('success', "Service created successfully.");
     }
 
@@ -49,9 +52,8 @@ class ServiceController extends Controller
         $service = Service::findOrFail($id);
         $service->title = $request->title;
         $service->content = $request->content;
-
-        $file = $request->photo;
         // Check if a new photo was uploaded
+        $file = $request->photo;
         if ($file) {
             $name = 'service-' . $service->id . '.' . $file->extension();
             // Save Image to 'upload' folder
@@ -61,6 +63,7 @@ class ServiceController extends Controller
         // Update Database
         $service->save();
 
+        cache()->forget('services');
         return to_route('services')->with('success', "Service updated successfully.");
     }
 
@@ -74,6 +77,7 @@ class ServiceController extends Controller
         }
         $service->delete();
 
+        cache()->forget('services');
         return back()->with('success', 'Service Deleted.');
     }
 }

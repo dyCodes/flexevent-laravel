@@ -8,29 +8,39 @@ use App\Models\Testimonial;
 
 class PageController extends Controller
 {
-    //
     public function index()
     {
-        $services = Service::latest()->get();
-        $testimonials = Testimonial::latest()->get();
-        $images = Image::FetchByAlbum('gallery', 8);
+        $images = cache()->remember('images', now()->addDay(), function () {
+            return Image::FetchByAlbum('gallery');
+        });
+        $testimonials = cache()->remember('testimonials', now()->addDay(), function () {
+            return Testimonial::latest()->get();
+        });
+        $services = cache()->remember('services', now()->addDay(), function () {
+            return Service::latest()->get();
+        });
 
-        return view('pages.index')->with([
-            'images' => $images,
+        $data =  array(
+            'images' =>  $images->take(8),
             'testimonials' => $testimonials,
-            'services' => $services,
-        ]);
+            'services' =>  $services,
+        );
+        return view('pages.index')->with($data);
     }
 
     public function about()
     {
-        $services = Service::latest()->get();
+        $services = cache()->remember('services', now()->addDay(), function () {
+            return Service::latest()->get();
+        });
         return view('pages.about')->with('services', $services);
     }
 
     public function gallery()
     {
-        $images = Image::FetchByAlbum('gallery');
+        $images = cache()->remember('images', now()->addDay(), function () {
+            return Image::FetchByAlbum('gallery');
+        });
         return view('pages.gallery')->with('images', $images);
     }
 

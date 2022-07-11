@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 
 class SettingController extends Controller
 {
     public function index()
     {
-        $settings = Setting::first();
+        $settings = cache()->remember('settings', now()->addDay(), function () {
+            return Setting::first();
+        });
         $user = auth()->user();
-
         return view('dashboard.settings')->with(['settings' => $settings, 'user' => $user]);
     }
 
@@ -29,8 +29,8 @@ class SettingController extends Controller
             'name' => $request->name,
             'email' => $request->email,
         ]);
-        // Clear settings cache
-        Cache::forget('settings');
+
+        cache()->forget('settings');
         return to_route('settings')->with('success', "Settings updated successfully.");
     }
 
@@ -43,11 +43,9 @@ class SettingController extends Controller
         ]);
 
         $user = User::first();
-
         if (Hash::check($request['current_password'], $user->password)) {
             // Update user password
             $user->update(['password' => Hash::make($request->password)]);
-
             return back()->withFragment('password')
                 ->with('password_success', 'Password changed successfully.');
         } else {

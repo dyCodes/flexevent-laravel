@@ -10,13 +10,10 @@ class ImageController extends Controller
 {
     public function index()
     {
-        $images = Image::FetchByAlbum('gallery');
+        $images = cache()->remember('images', now()->addDay(), function () {
+            return Image::FetchByAlbum('gallery');
+        });
         return view('dashboard.gallery')->with('images', $images);
-    }
-
-    public function upload()
-    {
-        return view('dashboard.upload');
     }
 
     public function store(Request $request)
@@ -25,7 +22,6 @@ class ImageController extends Controller
             // Max file size: 6MB/6144 KB
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:6144',
         ]);
-
         $imageFile = $request->file;
         $name = $imageFile->getClientOriginalName();
         $imagePath = public_path('upload/gallery/' . $name);
@@ -50,9 +46,8 @@ class ImageController extends Controller
         $image->thumbnail = $imageUrl;
         $image->save();
 
-        return response()->json(
-            $status = 200
-        );
+        cache()->forget('images');
+        return response()->json($status = 200);
     }
 
     public function destroy($id)
@@ -63,8 +58,7 @@ class ImageController extends Controller
         // Delete image file from folder
         File::delete($imagePath);
 
-        return response()->json(
-            $status = 200
-        );
+        cache()->forget('images');
+        return response()->json($status = 200);
     }
 }

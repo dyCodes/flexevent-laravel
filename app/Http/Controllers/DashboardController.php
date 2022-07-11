@@ -16,7 +16,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Get/Store cache values
         $images = Cache::remember('images', now()->addDay(), function () {
             return Image::FetchByAlbum('gallery');
         });
@@ -32,7 +31,6 @@ class DashboardController extends Controller
             'testimonial_count' =>  $testimonials->count(),
             'service_count' => $services ? $services->count() : Service::count(),
         );
-
         return view('dashboard.index')->with($data);
     }
 
