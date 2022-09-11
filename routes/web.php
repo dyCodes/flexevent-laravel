@@ -68,5 +68,5 @@ Route::controller(PageController::class)->group(function () {
     Route::get('about', 'about');
     Route::get('gallery', 'gallery');
     Route::get('contact', 'contact');
-    Route::post('contact', 'send_email')->name('contact');
+    Route::post('contact', 'send_email')->name('send_email');
 });

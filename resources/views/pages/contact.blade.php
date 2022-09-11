@@ -44,7 +44,8 @@
           </div>
 
           <div class="col-lg-6 p-lg-5 form">
-            <form>
+            <form action="{{ route('send_email') }}" method="POST">
+              @csrf
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
@@ -60,11 +61,12 @@
                   required="" />
               </div>
               <div class="form-group">
-                <select class="form-select" required>
-                  <option selected="">Your Event Type</option>
-                  <option value="wedding">Wedding</option>
-                  <option value="2">Corporate Event</option>
-                  <option value="2">Social Event</option>
+                <select class="form-select" name="event" required>
+                  <option value="">Your Event Type</option>
+                  <option value="Wedding">Wedding</option>
+                  <option value="Corporate Event">Corporate Event</option>
+                  <option value="Social Event">Social Event</option>
+                  <option value="Others">Others</option>
                 </select>
               </div>
 
@@ -72,13 +74,13 @@
                 <textarea class="form-control" name="message" rows="5" placeholder="Message" required=""></textarea>
               </div>
               <!-- <div class="status">
-                                                      <div class="alert alert-success" role="alert">
-                                                        <div>Your message has been sent. Thank you!</div>
-                                                      </div>
-                                                      <div class="alert alert-danger" role="alert">
-                                                        <div class="error-message">Error! Message not sent.</div>
-                                                      </div>
-                                                    </div> -->
+                                                                                              <div class="alert alert-success" role="alert">
+                                                                                                <div>Your message has been sent. Thank you!</div>
+                                                                                              </div>
+                                                                                              <div class="alert alert-danger" role="alert">
+                                                                                                <div class="error-message">Error! Message not sent.</div>
+                                                                                              </div>
+                                                                                            </div> -->
               <div>
                 <button type="submit" class="btn btn-dark">
                   Send Message

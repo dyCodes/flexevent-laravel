@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use App\Models\Service;
 use App\Models\Testimonial;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
@@ -47,5 +48,10 @@ class PageController extends Controller
     public function contact()
     {
         return view('pages.contact');
+    }
+
+    public function send_email(Request $request)
+    {
+        dd($request->all());
     }
 }
